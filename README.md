@@ -57,7 +57,8 @@ TOKEN=
 TOKEN=Y0U4Re41dI0t.AhAHhAhhAhAAHha
 ```
 トークン取得方法は各自で調べてね
-
+<br>
+* .env.example を .env に名前を書き換えてください
 ## 実行環境
 [Python 3.12.4](https://www.python.org/downloads/release/python-3124/)<br>
 [discord.py-self   2.0.1](https://discordpy-self.readthedocs.io/en/latest/intro.html)<br>
