@@ -62,6 +62,6 @@ async def on_message(message):
             result = safe_eval(expression)
             await message.channel.send(str(result))
         except Exception as e:
-            await message.channel.send("Error: Invalid expression")
+            return
 
 client.run(token)
