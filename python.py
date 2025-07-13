@@ -6,6 +6,10 @@ import discord
 
 # 設定:
 prefix = ";"
+# オーナーのみが使用できるどうか
+owner_only = True
+# オーナーのユーザーID（オーナーのみが使用できる場合のみ有効）
+owner_id = 123456789012345678
 
 load_dotenv()
 token = os.getenv("TOKEN")
@@ -49,6 +53,8 @@ async def on_ready():
 async def on_message(message):
     content = message.content.translate(replace_table).strip()
     if content.startswith(prefix):
+        if owner_only and message.author.id != owner_id:
+            return
         expression = content[1:].strip()
         if not expression:
             return
@@ -56,6 +62,6 @@ async def on_message(message):
             result = safe_eval(expression)
             await message.channel.send(str(result))
         except Exception as e:
-            await message.channel.send(e)
+            await message.channel.send("Error: Invalid expression")
 
 client.run(token)
